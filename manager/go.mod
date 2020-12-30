@@ -1,4 +1,4 @@
-module github.com/nktch1/imager
+module imager
 
 go 1.14
 

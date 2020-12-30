@@ -6,7 +6,7 @@ load("@com_github_grpc_grpc//bazel:cc_grpc_library.bzl", "cc_grpc_library")
 
 proto_library(
     name = "api_proto",
-    srcs = ["api/api.proto"],
+    srcs = ["api.proto"],
 )
 
 cc_proto_library(

@@ -1,5 +1,5 @@
 */.idea
-processor/src/bazel*
+processor/bazel*
 
 .idea
 .DS_Store

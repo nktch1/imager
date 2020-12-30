@@ -5,7 +5,7 @@ import (
 	"crypto/md5"
 	"fmt"
 	"google.golang.org/grpc"
-	"imager/manager/api"
+	"imager/api"
 	"io"
 	"log"
 	"strconv"
@@ -23,11 +23,13 @@ func (c *client) Process(ctx context.Context) error  {
 	client := api.NewProcessorClient(c.conn)
 	stream, err := client.Process(ctx)
 	if err != nil {
+		panic(err)
+
 		log.Fatal("can't get a stream", err)
+
 	}
 
 	waitResponse := make(chan error)
-
 	go func() {
 		for {
 			humanPosition, err := stream.Recv()
@@ -38,7 +40,8 @@ func (c *client) Process(ctx context.Context) error  {
 			}
 
 			if err != nil {
-				log.Fatal("stream is corrupted")
+				panic(err)
+				log.Fatal("stream is corrupted", err)
 				waitResponse <- err
 			}
 
