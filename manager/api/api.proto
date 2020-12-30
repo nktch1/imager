@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package api;
+option go_package = ".;api";
+
+service Processor {
+  rpc Process (stream RawImage) returns (stream HumanPosition);
+}
+
+message RawImage {
+  string id = 1;
+  bytes image = 2;
+}
+
+message Point {
+  float x = 1;
+  float y = 2;
+}
+
+message HumanPosition {
+  string id = 1;
+  Point point = 2;
+}
+

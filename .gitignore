@@ -1,0 +1,5 @@
+*/.idea
+processor/src/bazel*
+
+.idea
+.DS_Store
